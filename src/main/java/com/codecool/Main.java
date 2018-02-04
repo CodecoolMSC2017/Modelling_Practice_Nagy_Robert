@@ -1,6 +1,10 @@
 package com.codecool;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.Map;
 import java.util.HashMap;
@@ -16,6 +20,7 @@ public class Main {
 
     public static void main(String[] args){
         attack = new Attack();
+        enemy = new Attack();
         enemy.army = enemy.createArmy(2, 2, 1);
 
         while (true) {
@@ -64,7 +69,7 @@ public class Main {
         for (Units unit : Units.values()) {
             System.out.println(unit);
         }
-        System.out.println("\n");
+        System.out.printf("\n");
     }
 
     private static void handleCreate(){
@@ -107,6 +112,7 @@ public class Main {
             attack = (Attack) in.readObject();
             in.close();
             fileIn.close();
+            System.out.println("Your army have loaded!");
          } catch (IOException e) {
             System.out.println("You have no army saved!\n");
          } catch (ClassNotFoundException c) {
