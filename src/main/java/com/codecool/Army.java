@@ -1,10 +1,12 @@
 package com.codecool;
 
+import java.util.List;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
-import java.util.List;
+import java.io.Serializable;
 
-public class Army {
+public class Army implements Serializable {
 
     protected Units unit;
     protected int damage;
@@ -18,13 +20,12 @@ public class Army {
         this.reach = reach;
     }
 
-    public static Map<Integer, Army> createUnit(Units unit, int numOfSoldiers){
+    public static HashMap<Integer, Army> createUnit(Units unit, int numOfSoldiers){
 
-        Map<Integer, Army> soldiers = new HashMap<Integer, Army>();
+        HashMap<Integer, Army> soldiers = new HashMap<Integer, Army>();
         switch (unit) {
             case SHORT_RANGE:
                 for(int i = 0; i < numOfSoldiers; i++){
-
                     soldiers.put(i, new Soldier());
                 }
                 break;

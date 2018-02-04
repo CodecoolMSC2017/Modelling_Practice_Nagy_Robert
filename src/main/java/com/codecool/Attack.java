@@ -3,26 +3,28 @@ package com.codecool;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
+import java.io.Serializable;
+import java.util.ArrayList;
 
-public class Attack {
+public class Attack implements Serializable {
 
-    public List<HashMap<Integer, Army>> army;
+    public HashMap<String, HashMap<Integer, Army>> army;
 
     public Attack(){
-        this.army = new List<HashMap<Integer, Army>>();
+        this.army = new HashMap<String, HashMap<Integer, Army>>();
     }
 
-    public List<HashMap<Integer, Army>> createArmy(int numOfSoldiers, int numOfRangers, int numOfHeavies){
+    public HashMap<String, HashMap<Integer, Army>> createArmy(int numOfSoldiers, int numOfRangers, int numOfHeavies){
 
-        List<HashMap<Integer, Army>> createdArmy = new List<HashMap<Integer, Army>>();
+        HashMap<String, HashMap<Integer, Army>> createdArmy = new HashMap<String, HashMap<Integer, Army>>();
 
-        Map<Integer, Army> unit1 = Army.createUnit(Units.SHORT_RANGE, numOfSoldiers);
-        Map<Integer, Army> unit2 = Army.createUnit(Units.LONG_RANGE, numOfRangers);
-        Map<Integer, Army> unit3 = Army.createUnit(Units.HEAVY, numOfHeavies);
+        HashMap<Integer, Army> unit1 = Army.createUnit(Units.SHORT_RANGE, numOfSoldiers);
+        HashMap<Integer, Army> unit2 = Army.createUnit(Units.LONG_RANGE, numOfRangers);
+        HashMap<Integer, Army> unit3 = Army.createUnit(Units.HEAVY, numOfHeavies);
 
-        createdArmy.add(unit1);
-        createdArmy.add(unit2);
-        createdArmy.add(unit3);
+        createdArmy.put("Short Range", unit1);
+        createdArmy.put("Long Range", unit2);
+        createdArmy.put("Heavy", unit3);
 
         return createdArmy;
     }
