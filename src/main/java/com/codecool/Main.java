@@ -1,6 +1,6 @@
 package com.codecool;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
@@ -42,7 +42,20 @@ public class Main {
 
     private static void handleUnits(){}
 
-    private static void handleCreate(){}
+    private static void handleCreate(){
+        System.out.println("Give me the number of short range soldiers you want in your army!");
+        int numOfSoldiers = scanner.nextLine();
+        System.out.println("Give me the number of long range rangers you want in your army!");
+        int numOfRangers = scanner.nextLine();
+        System.out.println("Give me the number of heavy soldiers you want in your army!");
+        int numOfHeavies = scanner.nextLine();
+
+        attack.createArmy(numOfSoldiers, numOfRangers, numOfHeavies);
+
+        System.out.println("done");
+        System.out.println(Integers.toString(attack.army.length));
+
+    }
 
     private static void handleAttack(){}
 
